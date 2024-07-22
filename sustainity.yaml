@@ -101,6 +101,11 @@ $defs:
         items:
           type: string
         uniqueItems: true
+      domains:
+        type: array
+        items:
+          type: string
+        uniqueItems: true
 
   relatedProducts:
     type: object
@@ -181,6 +186,8 @@ $defs:
     properties:
       value:
         type: integer
+        minimum: 0
+        maximum: 100
     required:
       - value
 
@@ -312,7 +319,7 @@ $defs:
         type: array
         items:
           type: string
-      categorisation::
+      categorisation:
         $ref: "#/$defs/productCategorisation"
       origins:
         $ref: "#/$defs/productOrigins"
@@ -323,7 +330,7 @@ $defs:
     required:
       - id
       - ids
-      - name
+      - names
 
   producerProduct:
     type: object
@@ -342,7 +349,7 @@ $defs:
         type: array
         items:
           type: string
-      categorisation::
+      categorisation:
         $ref: "#/$defs/productCategorisation"
       origins:
         $ref: "#/$defs/productOrigins"
@@ -389,7 +396,7 @@ $defs:
     required:
       - id
       - ids
-      - name
+      - names
 
   aboutReviewer:
     type: object
