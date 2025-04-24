@@ -151,6 +151,14 @@ $defs:
         type: array
         items:
           type: string
+      regions:
+        $ref: "#/$defs/regionList"
+
+  producerOrigins:
+    type: object
+    properties:
+      regions:
+        $ref: "#/$defs/regionList"
 
   report:
     type: object
@@ -240,6 +248,8 @@ $defs:
         type: array
         items:
           type: string
+      origins:
+        $ref: "#/$defs/producerOrigins"
     required:
       - id
       - ids
@@ -267,6 +277,8 @@ $defs:
         type: array
         items:
           type: string
+      origins:
+        $ref: "#/$defs/producerOrigins"
     required:
       - id
       - ids
@@ -293,6 +305,8 @@ $defs:
         type: array
         items:
           type: string
+      origins:
+        $ref: "#/$defs/producerOrigins"
       report:
         $ref: "#/$defs/report"
       review:
