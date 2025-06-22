@@ -160,11 +160,43 @@ $defs:
       regions:
         $ref: "#/$defs/regionList"
 
+  shopping:
+    type: array
+    items:
+      $ref: "#/$defs/shoppingEntry"
+
+  shoppingEntry:
+    type: object
+    properties:
+      shop:
+        $ref: "#/$defs/verifiedShop"
+      id:
+        type: string
+      description:
+        type: string
+    required:
+      - shop
+      - id
+      - description
+
+  verifiedShop:
+    type: string
+    enum:
+      - fairphone
+      - amazon
+
   report:
     type: object
     properties:
+      title:
+        type: string
       url:
         type: string
+
+  reports:
+    type: array
+    items:
+      $ref: "#/$defs/report"
 
   aboutScoreReview:
     type: object
@@ -205,10 +237,22 @@ $defs:
       is_certified:
         type: boolean
 
+  mention:
+    type: object
+    properties:
+      title:
+        type: string
+      url:
+        type: string
+    required:
+      - title
+      - url
+
   review:
     oneOf:
       - $ref: "#/$defs/scoreReview"
       - $ref: "#/$defs/certification"
+      - $ref: "#/$defs/mention"
 
   aboutCataloger:
     type: object
@@ -307,8 +351,8 @@ $defs:
           type: string
       origins:
         $ref: "#/$defs/producerOrigins"
-      report:
-        $ref: "#/$defs/report"
+      reports:
+        $ref: "#/$defs/reports"
       review:
         $ref: "#/$defs/review"
     required:
@@ -341,6 +385,8 @@ $defs:
         $ref: "#/$defs/productAvailability"
       related:
         $ref: "#/$defs/relatedProducts"
+      shopping:
+        $ref: "#/$defs/shopping"
     required:
       - id
       - ids
@@ -371,6 +417,8 @@ $defs:
         $ref: "#/$defs/productAvailability"
       related:
         $ref: "#/$defs/relatedProducts"
+      shopping:
+        $ref: "#/$defs/shopping"
     required:
       - id
       - ids
@@ -403,8 +451,10 @@ $defs:
         $ref: "#/$defs/productAvailability"
       related:
         $ref: "#/$defs/relatedProducts"
-      report:
-        $ref: "#/$defs/report"
+      shopping:
+        $ref: "#/$defs/shopping"
+      reports:
+        $ref: "#/$defs/reports"
       review:
         $ref: "#/$defs/review"
     required:
