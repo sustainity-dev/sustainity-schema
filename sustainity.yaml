@@ -130,9 +130,7 @@ $defs:
       - regions
 
   productCategory:
-    type: array
-    items:
-      type: string
+    type: string
 
   productCategorisation:
     type: object
@@ -298,7 +296,7 @@ $defs:
       - id
       - ids
       - name
-      - website
+      - websites
 
   catalogProducer:
     type: object
@@ -422,7 +420,7 @@ $defs:
     required:
       - id
       - ids
-      - name
+      - names
       - description
       - categorisation
 
@@ -494,13 +492,11 @@ $defs:
         type: string
     required:
       - id
-      - name
+      - names
 
-  catalogerRoot:
+  catalogerData:
     type: object
     properties:
-      meta:
-        $ref: "#/$defs/meta"
       cataloger:
         $ref: "#/$defs/aboutCataloger"
       producers:
@@ -512,16 +508,13 @@ $defs:
         items:
           $ref: "#/$defs/catalogProduct"
     required:
-      - meta
       - cataloger
       - producers
       - products
 
-  producerRoot:
+  producerData:
     type: object
     properties:
-      meta:
-        $ref: "#/$defs/meta"
       producer:
         $ref: "#/$defs/aboutProducer"
       products:
@@ -533,16 +526,13 @@ $defs:
         items:
           $ref: "#/$defs/producerReviewer"
     required:
-      - meta
       - producer
-      - producers
+      - products
       - reviewers
 
-  reviewerRoot:
+  reviewerData:
     type: object
     properties:
-      meta:
-        $ref: "#/$defs/meta"
       reviewer:
         $ref: "#/$defs/aboutReviewer"
       producers:
@@ -554,16 +544,7 @@ $defs:
         items:
           $ref: "#/$defs/reviewProduct"
     required:
-      - meta
       - reviewer
       - producers
       - products
 
-  root:
-    oneOf:
-      - $ref: "#/$defs/catalogerRoot"
-      - $ref: "#/$defs/producerRoot"
-      - $ref: "#/$defs/reviewerRoot"
-
-type: object
-$ref: "#/$defs/root"
